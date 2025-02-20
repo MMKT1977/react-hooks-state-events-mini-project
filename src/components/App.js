@@ -24,11 +24,19 @@ function App() {
 
   function getFilteredTasks() {
     if (selectedCategory === "All") {
-      return tasks; // Show all tasks if "All" is selected
+      return tasks; 
     } else {
       return tasks.filter((task) => task.category === selectedCategory);
     }}
 
+  const filteredCategories = [];
+
+    for(let i = 0;i<CATEGORIES.length; i++){
+      if(CATEGORIES[i] !== "All"){
+        filteredCategories.push(CATEGORIES[i]);
+      }
+    } 
+    
   return (
     <div className="App">
       <h2>My tasks</h2>
@@ -37,7 +45,7 @@ function App() {
         onSelectCategory={setSelectedCategory}
         />
       <NewTaskForm 
-        categories={CATEGORIES.filter((cat) => cat !== "All")}
+        categories={filteredCategories}
         onTaskFormSubmit={handleTaskFormSubmit}
         />
       <TaskList tasks={getFilteredTasks()} onDelete={handleDelete} />

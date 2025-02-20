@@ -11,6 +11,7 @@ function CategoryFilter({categories, selectedCategory, onSelectCategory}) {
     <div className="categories">
       
       {/* render <button> elements for each category here */}
+
       {categories.map((category) => (
         <button
           key={category}
